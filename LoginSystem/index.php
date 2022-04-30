@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,8 +28,17 @@
                 </ul>
             </div>
             <ul class="menu-member">
+                <?php
+                if(isset($_SESSION["userid"])){
+                ?>
+                <li><a href="#"><?= $_SESSION["useruid"]; ?></a></li>
+                <li><a href="includes/logout.inc.php" class="header-login-a">LOGOUT</a></li>
+                <?php
+                }else{
+                 ?>
                 <li><a href="#">SIGN UP</a></li>
                 <li><a href="#" class="header-login-a">LOGIN</a></li>
+                 <?php } ?>
             </ul>
         </nav>
     </header>
@@ -69,6 +83,8 @@
             </div>
         </div>
     </section>
+
+
 
 </body>
 </html>
